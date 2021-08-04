@@ -17,6 +17,8 @@ def get_hours():
     daily_wage_full = 0
     daily_wage_part = 0
     present_count = 0
+    day_daily_month_part = {}
+    day_daily_month_full = {}
     for day in range(1, 21):
         random_number = random.randint(0, 1)
         if random_number == 1:
@@ -24,6 +26,10 @@ def get_hours():
     for i in range(present_count):
         daily_wage_full += DAILY_WAGE
         daily_wage_part += PART_TIME_WAGE
+    for i in range(1, present_count+1):
+        day_daily_month_part['day' + str(i)] = PART_TIME_WAGE * i
+        day_daily_month_full['day' + str(i)] = DAILY_WAGE * i
+
     if ATTENDANCE == 1:
         emp_type = random.randint(0, 1)
         break_hour = 0
@@ -47,6 +53,8 @@ def get_hours():
             print("Full Time employee Total month wage is : ", MONTHLY_FULL_WAGE)
             print(" full time employee work hours for a month is : ", DAY_HOURS * WORK_DAYS)
             print("Full time employee present days total monthly wage is ", daily_wage_full)
+            print("Full time employee daily and day wage")
+            return day_daily_month_full
 
         else:
             month_wage = 0
@@ -63,6 +71,8 @@ def get_hours():
             print("Part Time employee Total month wage is : ", MONTHLY_PART_TIME_WAGE)
             print(" Part time employee work hours for a month is : ", PART_TIME_HOURS * WORK_DAYS)
             print("part time employee present days total monthly wage is ", daily_wage_part)
+            print("Part time employee daily and day wage")
+            return day_daily_month_part
 
     else:
         print("Employee is Absent.............!")
